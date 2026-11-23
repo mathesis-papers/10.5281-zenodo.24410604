@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "name": "note.tex",
+      "bytes": 18249,
+      "sha256": "be0e37ddb0ab257065cb75b334c08491a7929a83a356611b951d13f66d7b2406"
+    },
+    {
+      "name": "README.md",
+      "bytes": 5617,
+      "sha256": "c94b237e3d7ec00fa96e3cf2ab9964bd53c32e7d24d9a9822e55d314e4a131b3"
+    },
+    {
+      "name": "metadata.json",
+      "bytes": 1887,
+      "sha256": "41306c79a7fd464be0dfa639be6236935d2ac6a5db1845935053abcc58a301af"
+    },
+    {
+      "name": "verification-scope.json",
+      "bytes": 1308,
+      "sha256": "52381736c0686e16925bf22959182f3c711a1cea8853b73a3b1566c71593f6ab"
+    },
+    {
+      "name": "verify.py",
+      "bytes": 8087,
+      "sha256": "ae235ab4d69727f82caf06b38e6cb923afcd4d0000a5729ffbd6e6fc9f31580c"
+    },
+    {
+      "name": "verify_siblings.py",
+      "bytes": 7777,
+      "sha256": "95e555d38fad0ce6e4445c4d799333f79ec09b1277188d671e32492fbfde32e8"
+    },
+    {
+      "name": "source-fixtures.json",
+      "bytes": 2774,
+      "sha256": "00f641508b8798d2acc2c9702c311cd490e57d08d588f0789bd15bc3f463d83d"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 937,
+      "sha256": "74bed6f12f443e631488e8503df15566d22cefce4c3b72fe68a5fec7d3e17319"
+    },
+    {
+      "name": "sibling-checks.json",
+      "bytes": 1113,
+      "sha256": "7d9bc8afb5576d720e32adc42a18d6836d3aa8e122eb42b3e07fc2057b4b3d05"
+    },
+    {
+      "name": "source-table-checks.json",
+      "bytes": 1226,
+      "sha256": "52126db25ae40edc2fce9d2460bef06870cf3484f2e813134fa775446bfd1d13"
+    }
+  ]
+}

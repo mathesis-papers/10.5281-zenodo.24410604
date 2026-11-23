@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 81979,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "8c217e515fb22c439dcd5dd943cfa5d3954c67718d9d9025fd087285c9aa28fa",
+      "sha256": "8c217e515fb22c439dcd5dd943cfa5d3954c67718d9d9025fd087285c9aa28fa"
+    },
+    "source": {
+      "bytes": 20993,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "75f286e2423ed80f627ff5bcb4c7b1b26a1b9192c24af5c30b2a4a328d3039d5",
+      "sha256": "75f286e2423ed80f627ff5bcb4c7b1b26a1b9192c24af5c30b2a4a328d3039d5"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Extending Fried's repetition-word enumeration (arXiv:2410.07237v3, 26 October 2024, Theorem 10), we prove Colin Barker's two conjectured formulas in the unpaginated FORMULA section of OEIS A268943, revision 8 (17 January 2019), for the arrays introduced by R. H. Hardin. The labels of successive adjacent equal pairs must advance cyclically through an eight-letter alphabet. A three-state decomposition proves the rational generating function and the radical expression for every positive length. The same decomposition works for every alphabet size at least two, establishing the empirical column recurrences and the first seven row polynomials in Hardin's related table A268944. More generally, the enumeration depends only on the common indegree of a loopless relation allowed between successive event labels; Fried's unequal-label rule is one case. We also count words by their number of equality events.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": "10.5281/zenodo.24410604",
+    "current_version": 2,
+    "doi": "10.5281/zenodo.24410605",
+    "lean_source": {
+      "revision": "8a9173761a0a8ce40a4238793b5c18e452f76446",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/8a9173761a0a8ce40a4238793b5c18e452f76446/D5/S1/Words/Patterns/BarkerCyclicRepetitionCounting.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 81979,
+      "sha256": "8c217e515fb22c439dcd5dd943cfa5d3954c67718d9d9025fd087285c9aa28fa",
+      "url": "/api/v1/collected-papers/hardin-barker-cyclic-repetitions/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T05:37:13.639632398Z",
+    "record": "hardin-barker-cyclic-repetitions",
+    "repository_name": "10.5281-zenodo.24410604",
+    "source": {
+      "bytes": 20993,
+      "sha256": "75f286e2423ed80f627ff5bcb4c7b1b26a1b9192c24af5c30b2a4a328d3039d5",
+      "url": "/api/v1/collected-papers/hardin-barker-cyclic-repetitions/files/source?version=2"
+    },
+    "title": "Barker and Hardin's cyclic-repetition formulas and an extension of Fried's enumeration",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T05:37:13.639632398Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "hardin-barker-cyclic-repetitions"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "status": "pass",
+  "regular_relations": {
+    "alphabet_sizes": [
+      2,
+      4
+    ],
+    "lengths": [
+      0,
+      5
+    ],
+    "relations": 176,
+    "words": 227626,
+    "coverage": "All loopless relations of constant indegree, including nonconstant outdegree; total and event-number counts."
+  },
+  "cyclic_event_counts": {
+    "alphabet_sizes": [
+      2,
+      8
+    ],
+    "lengths": [
+      0,
+      6
+    ],
+    "words": 519049
+  },
+  "binary_balanced_substrings": {
+    "lengths": [
+      0,
+      10
+    ],
+    "words": 2047
+  },
+  "binary_sum_and_recurrences": {
+    "lengths": [
+      0,
+      120
+    ]
+  },
+  "fried_rational_function": {
+    "alphabet_sizes": [
+      2,
+      12
+    ],
+    "lengths": [
+      0,
+      80
+    ],
+    "parameter_pairs": 891,
+    "constant_term": 1,
+    "positive_index_counts": "Independent last-letter/last-event automaton."
+  },
+  "A269467_polynomial_rows": {
+    "lengths": [
+      1,
+      7
+    ],
+    "variable": "k=q-1"
+  },
+  "scope": "Finite exact enumeration and coefficient identities; the general statements have written proofs in note.tex."
+}

@@ -1,0 +1,386 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\aq}{a_q}
+\title{Barker and Hardin's cyclic-repetition formulas\\and an extension of Fried's enumeration}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Extending Fried's repetition-word enumeration (arXiv:2410.07237v3,
+26 October 2024, Theorem~10), we prove
+Colin Barker's two conjectured formulas in the unpaginated FORMULA
+section of OEIS A268943, revision 8 (17 January 2019), for the arrays introduced
+by R. H. Hardin. The labels of successive adjacent equal pairs must advance
+cyclically through an eight-letter alphabet. A three-state decomposition proves
+the rational generating function and the radical expression for every positive
+length. The same decomposition works for every alphabet size at least two,
+establishing the empirical column recurrences and the first seven row
+polynomials in Hardin's related table A268944. More generally, the enumeration
+depends only on the common indegree of a loopless relation allowed between
+successive event labels; Fried's unequal-label rule is one case. We also
+count words by their number of equality events.
+\end{abstract}
+
+\section{Words and their equality events}
+Fix an integer $q\geq2$ and write $\mathcal A_q=\{0,1,\ldots,q-1\}$.
+For a word $w=(w_1,\ldots,w_n)$ over $\mathcal A_q$, an equality event is an
+index $i<n$ with $w_i=w_{i+1}$; its label is $w_i$. List these labels in
+increasing order of $i$, retaining overlapping pairs. The word is admissible
+if each label after the first is the preceding label plus one modulo $q$.
+An empty or singleton list of labels satisfies this condition. Thus $000$
+is not admissible, whereas $(6,4,6,5,4)$ is admissible over eight letters.
+Only the labels advance cyclically: the word itself is linear, and words
+are not identified under rotation or relabeling.
+
+Let $\aq(n)$ count admissible words of length $n$, with $\aq(0)=1$ for the
+empty word, and put $S_q(x)=\sum_{n\geq1}\aq(n)x^n$. This zero-constant-term
+convention matches the offset $1,1$ of A268943~\cite{hardin8}.
+Its empirical recurrence and Barker's two conjectures concern $q=8$;
+Hardin's table A268944 uses $T(n,k)=a_{k+1}(n)$ for $n,k\geq1$~\cite{hardintable}.
+The FORMULA block in A268943 is headed ``Conjectures from Colin Barker,
+Jan 17 2019''; Corollary~\ref{cor:barker} proves its two displayed expressions.
+Fried~\cite[Section 3.2, Theorem 4]{fried}, first in
+\cite[Section 2.8, Theorem 10]{friedpre}, counts words whose successive
+event labels are unequal, rather than cyclic successors. The two restrictions
+agree for $q=2$. For $q\geq3$ they differ: $(0,0,2,2)$ satisfies Fried's
+condition but not ours. We give the cyclic-successor enumeration uniformly
+in $q$, and recover the known binary formulas as its two-letter case.
+
+\begin{theorem}\label{thm:general}
+For every integer $q\geq2$,
+\begin{equation}\label{eq:gf}
+ S_q(x)=\frac{qx\bigl(1-(q-3)x-(q-1)x^2\bigr)}
+ {(1-(q-1)x)(1-(q-2)x-qx^2)}.
+\end{equation}
+The initial values are $\aq(0)=1$, $\aq(1)=q$, $\aq(2)=q^2$, and
+\begin{equation}\label{eq:rec}
+ \aq(n+3)=(2q-3)\aq(n+2)+(-q^2+4q-2)\aq(n+1)
+                -q(q-1)\aq(n)\qquad(n\geq0).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For nonempty admissible words, use three disjoint states: $U$ has no equality
+event; $A$ has first event label equal to the successor modulo $q$ of the
+first letter; $B$ has an event but does not satisfy the condition for $A$.
+Let $U_n,A_n,B_n$ be their respective counts at length $n\geq1$.
+They start at $(U_1,A_1,B_1)=(q,0,0)$.
+
+Prepend a letter $c$ to a word starting with $b$.
+From $U$, the $q-1$ choices $c\ne b$ remain in $U$, and $c=b$ creates
+the first event, of label $b$, putting the word in $B$.
+Now suppose the first existing event has label $r$.
+If $c=b$, a new event of label $b$ precedes $r$; this is permitted exactly
+when $r=b+1\pmod q$, that is, for a word in $A$, and the resulting word
+belongs to $B$.
+If $c\ne b$, no event is added and admissibility is unchanged. The result
+belongs to $A$ exactly when $c=r-1\pmod q$. For a word in $A$ this choice
+is $b$ and is excluded, so all $q-1$ unequal choices belong to $B$.
+For a word in $B$ there is exactly one allowed choice producing $A$ and
+$q-2$ producing $B$; the equal choice is forbidden.
+Removing the first letter deletes at most the first event, so an admissible
+word has an admissible suffix. The first letter and suffix are unique;
+therefore these cases give the complete transition
+\begin{equation}\label{eq:states}
+ U_{n+1}=(q-1)U_n,\qquad A_{n+1}=B_n,\qquad
+ B_{n+1}=U_n+qA_n+(q-2)B_n.
+\end{equation}
+
+In the formal power series ring $\mathbb Q[[x]]$, set
+$U(x)=\sum_{n\geq1}U_nx^n$ and define $A(x),B(x)$ similarly.
+Equation~\eqref{eq:states} gives
+\[
+ U(x)=\frac{qx}{1-(q-1)x},\qquad A(x)=xB(x),\qquad
+ B(x)=xU(x)+qxA(x)+(q-2)xB(x).
+\]
+Hence $B(x)=xU(x)/(1-(q-2)x-qx^2)$, and
+$S_q(x)=U(x)+(1+x)B(x)$ gives~\eqref{eq:gf}. All denominators have
+constant coefficient one, so these divisions are well-defined formally.
+Adding the empty word yields
+\begin{equation}\label{eq:fullgf}
+ 1+S_q(x)=\frac{1+(3-q)x+(2-q)x^2}
+ {1-(2q-3)x+(q^2-4q+2)x^2+q(q-1)x^3}.
+\end{equation}
+Coefficient comparison at degrees zero, one and two gives the stated
+initial values, and comparison at degree $n+3$ gives~\eqref{eq:rec}.
+\end{proof}
+
+\section{Barker's eight-letter formulas}
+\begin{corollary}\label{cor:barker}
+For $n\geq1$, the count $a_8(n)$ in A268943 has generating function
+\[
+ S_8(x)=\frac{8x(1-5x-7x^2)}{(1-7x)(1-6x-8x^2)}
+\]
+and satisfies
+\begin{equation}\label{eq:radical}
+ a_8(n)=\frac{-272\,7^n+(153-37\sqrt{17})(3-\sqrt{17})^n
+                    +(153+37\sqrt{17})(3+\sqrt{17})^n}{34}.
+\end{equation}
+In particular, $a_8(n+3)=13a_8(n+2)-34a_8(n+1)-56a_8(n)$ for $n\geq0$.
+\end{corollary}
+\begin{proof}
+The generating function and recurrence are Theorem~\ref{thm:general} at
+$q=8$. The characteristic polynomial of the recurrence factors as
+\[
+ t^3-13t^2+34t+56=(t-7)(t^2-6t-8).
+\]
+Its roots are $7,3-\sqrt{17},3+\sqrt{17}$. Each corresponding power sequence,
+and therefore their linear combination on the right of~\eqref{eq:radical},
+satisfies the recurrence. Using $(\sqrt{17})^2=17$, that expression takes
+the values $1,8,64$ at $n=0,1,2$. These agree with $a_8(0),a_8(1),a_8(2)$.
+Induction in the order-three recurrence proves the identity at every index.
+\end{proof}
+
+The first five positive-index values are $8,64,504,3928,30344$, as in
+A268943. Formula~\eqref{eq:radical} also shows
+\[
+ a_8(n)\sim\frac{153+37\sqrt{17}}{34}(3+\sqrt{17})^n,
+\]
+because $|3-\sqrt{17}|<7<3+\sqrt{17}$ and the displayed leading coefficient
+is positive.
+
+\section{Hardin's related table}
+Putting $q=k+1$ in~\eqref{eq:rec} proves, uniformly for $k\geq1$,
+\begin{equation}\label{eq:column}
+ T(n+3,k)=(2k-1)T(n+2,k)+(-k^2+2k+1)T(n+1,k)
+                         -k(k+1)T(n,k)\quad(n\geq1).
+\end{equation}
+These coefficients reproduce all seven empirical column recurrences
+listed in A268944, and give the same result for every further column.
+For rows one through seven, the corresponding polynomials in $q=k+1$ are
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+$n$ & $a_q(n)$ \\
+\midrule
+1 & $q$ \\
+2 & $q^2$ \\
+3 & $q^3-q$ \\
+4 & $q^4-3q^2+3q$ \\
+5 & $q^5-6q^3+11q^2-7q$ \\
+6 & $q^6-10q^4+26q^3-30q^2+15q$ \\
+7 & $q^7-15q^5+50q^4-81q^3+73q^2-31q$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+They follow successively by substitution in~\eqref{eq:rec}, starting with
+$1,q,q^2$. Replacing $q$ by $k+1$ gives exactly the seven empirical row
+polynomials in A268944. In particular its first three rows are
+$k+1,(k+1)^2,k(k+1)(k+2)$, explaining the stated links to A000027,
+A000290 and A007531~\cite{rowrefs}.
+
+\begin{corollary}\label{cor:binary}
+For the binary column $q=2$,
+\[
+ S_2(x)=\frac{4x+6x^2}{1-2x^2}-\frac{2x}{1-x}.
+\]
+Consequently, $a_2(2m)=3\cdot2^m-2$ and
+$a_2(2m+1)=2^{m+2}-2$ for $m\geq0$. For $n\geq0$,
+\begin{align*}
+ a_2(n)&=\sum_{j=0}^n 2^{\min(j,n-j)},\\
+ a_2(n+2)&=2a_2(n)+2,\qquad
+ a_2(n)-a_2(n-1)=2^{\lfloor n/2\rfloor}\quad(n\geq1).
+\end{align*}
+These are the corresponding formulas of A027383~\cite{binary}.
+The binary words counted here are precisely those for which every substring
+has the difference between its numbers of ones and zeros between $-2$ and $2$.
+\end{corollary}
+\begin{proof}
+Substitute $q=2$ in~\eqref{eq:gf} and expand the geometric series to obtain
+the parity formulas. Splitting the finite sum at $\lfloor n/2\rfloor$
+gives the same parity formulas; subtraction gives the two recurrences.
+At $m=0$, the even formula also agrees with our empty-word value $1$.
+
+For the substring interpretation, replace a zero by a step $-1$ and a one
+by a step $+1$, and include the initial height zero. Every substring has
+the stated bound exactly when the range of all partial sums has width at
+most two. Before the first equality event, the steps alternate. That first
+event determines an interval of width two: after a $00$ event the path
+has descended from its upper endpoint to its lower endpoint, and after a
+$11$ event it has ascended in the opposite direction. Between events,
+alternating steps keep the path within that interval. The next equality
+event stays in the interval exactly when its label is opposite to the
+previous event's label. Repeating this argument proves both directions;
+with no events the path has width at most one.
+\end{proof}
+
+\section{A regular-relation extension of Fried's theorem}
+Let $R\subseteq\mathcal A_q\times\mathcal A_q$ be a relation with no
+loops, so $(b,b)\notin R$. Suppose that for each $r\in\mathcal A_q$
+there are exactly $d$ letters $b$ with $(b,r)\in R$, where
+$0\leq d\leq q-1$. Require successive equality-event labels to be related
+by $R$, and let $a_R(n)$ count these words, with $a_R(0)=1$.
+Put $S_R(x)=\sum_{n\geq1}a_R(n)x^n$.
+
+\begin{corollary}\label{cor:relation}
+For every such relation,
+\begin{equation}\label{eq:relation}
+ S_R(x)=\frac{qx\bigl(1-(q-3)x-(q+d-2)x^2\bigr)}
+ {(1-(q-1)x)(1-(q-2)x-(q+d-1)x^2)}.
+\end{equation}
+In particular, no other features of $R$ affect these counts. At $d=q-1$
+this reproves Fried's Theorem~4~\cite{fried}: if $F_q(x)$ denotes its
+displayed rational function, then
+\[
+ 1+S_R(x)=F_q(x)=
+ \frac{1-(q-3)x-2(q-2)x^2-(q-2)x^3}
+ {1-(2q-3)x+(q-1)(q-4)x^2+2(q-1)^2x^3}.
+\]
+Here the constant term includes the empty word. The positive-index counts
+agree with Fried's enumeration. Writing $b_q(n)=a_R(n)$ in this case gives
+\begin{equation}\label{eq:friedrec}
+ b_q(n+3)=(2q-3)b_q(n+2)+(-q^2+5q-4)b_q(n+1)
+             -2(q-1)^2b_q(n)\quad(n\geq1),
+\end{equation}
+with $b_q(1)=q$, $b_q(2)=q^2$, $b_q(3)=q^3-q$.
+This proves the seven empirical column recurrences of A269467~\cite{unequal}.
+For $q=k+1$, its rows $n=1,2,3$ are the same as those of A268944;
+the next four are
+\begin{align*}
+ b_{k+1}(4)&=k^4+4k^3+4k^2+k,\\
+ b_{k+1}(5)&=k^5+5k^4+7k^3+2k^2-k,\\
+ b_{k+1}(6)&=k^6+6k^5+11k^4+4k^3-k^2+k,\\
+ b_{k+1}(7)&=k^7+7k^6+16k^5+8k^4-k^3-k.
+\end{align*}
+Thus all seven displayed row formulas in A269467 follow as well.
+\end{corollary}
+\begin{proof}
+Use $U$ as before, put an eventful word in $A$ when its first letter $b$
+and first event label $r$ satisfy $(b,r)\in R$, and put it in $B$ otherwise.
+For an eventful suffix with first event $r$, exactly $d$ prepended letters
+satisfy $(c,r)\in R$. When the suffix lies in $A$, one of these letters
+is its first letter, so there are $d-1$ unequal choices into $A$;
+there are $q-d$ unequal choices into $B$, and the equal choice also
+enters $B$ since $R$ has no loops. From $B$, there are $d$ choices into
+$A$ and $q-d-1$ into $B$, and the equal choice is forbidden. Thus
+\[
+ U_{n+1}=(q-1)U_n,\quad A_{n+1}=(d-1)A_n+dB_n,\quad
+ B_{n+1}=U_n+(q-d+1)A_n+(q-d-1)B_n.
+\]
+When $d=0$, state $A$ is empty, so its displayed equation still holds.
+Writing $D(x)=1-(q-2)x-(q+d-1)x^2$ and solving these two eventful-state
+equations gives $A(x)+B(x)=x(1+x)U(x)/D(x)$, which proves
+\eqref{eq:relation}. At $d=q-1$, the only possible relation is inequality;
+adding one to~\eqref{eq:relation} and expanding gives the displayed
+formula of Fried. Comparing coefficients at degree $n+3\geq4$ gives
+\eqref{eq:friedrec}; successive substitution gives the displayed rows.
+At $d=1$ it gives Theorem~\ref{thm:general}; this also
+covers any fixed-point-free permutation of event labels.
+\end{proof}
+
+\begin{corollary}\label{cor:events}
+Let $c_R(n,r)$ count these words of length $n$ with exactly $r$ equality
+events. For $r\geq1$,
+\begin{equation}\label{eq:events}
+ \sum_{n\geq1}c_R(n,r)x^n=
+ \frac{q\,d^{r-1}x^{2r}}
+ {(1+x)^{r-1}(1-(q-1)x)^{r+1}},
+\end{equation}
+where $d^0=1$, including when $d=0$. In particular there are no words
+with $n<2r$, and $c_R(2r,r)=q\,d^{r-1}$.
+\end{corollary}
+\begin{proof}
+Mark each equality event by $y$. In the preceding transition, the terms
+$U_n$ and the equal-letter contribution $A_n$ entering $B$ acquire a
+factor $y$. Solving gives the eventful-word series
+\[
+ \frac{y x(1+x)U(x)}{(1+x)(1-(q-1)x)-dyx^2}.
+\]
+Expand its denominator geometrically in $y$ and insert
+$U(x)=qx/(1-(q-1)x)$ to obtain~\eqref{eq:events}.
+The coefficient at $x^{2r}$ is as stated. Equivalently, a shortest word
+with $r$ events is a concatenation of $r$ double letters whose labels
+form an $R$-chain; counting backwards gives $q d^{r-1}$ choices.
+\end{proof}
+
+\section{Coverage and verification}
+\begin{center}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}}
+\toprule
+Source item & Mathematical coverage \\
+\midrule
+A268943, FORMULA: Barker's generating function and radical formula
+& Proved in Corollary~\ref{cor:barker}. \\
+A268943, FORMULA: empirical recurrence
+& Proved in Corollary~\ref{cor:barker}. \\
+A268944, FORMULA: columns $k=1,\ldots,7$
+& Proved for all $k\geq1$ in~\eqref{eq:column}. \\
+A268944, FORMULA: rows $n=1,\ldots,7$
+& Proved by~\eqref{eq:rec} and the displayed polynomial table. \\
+A268944, CROSSREFS: first three rows
+& Proved identities with A000027, A000290 and A007531 above. \\
+A268944, CROSSREFS: first column; A027383, NAME and elementary FORMULA identities
+& Reproved in Corollary~\ref{cor:binary}; prior word proof Fried (2024), Theorem~10, and (2025), Theorem~4. \\
+A027383, balanced-substring interpretation
+& Proved equivalent to the binary event rule in Corollary~\ref{cor:binary}. \\
+Fried's unequal-label enumeration; A269467 column recurrences and seven row formulas
+& Reproved; prior proof Fried (2024), Theorem~10, and (2025), Theorem~4. Set $d=q-1$ in Corollary~\ref{cor:relation}. \\
+Loopless constant-indegree relations; counts by event number
+& Not posed in the two primary entries; proved in Corollaries~\ref{cor:relation}--\ref{cor:events}. \\
+A027383's tree, necklace, folding and arithmetic-sequence interpretations; unrelated cross-references
+& Not covered. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the \href{https://github.com/the-omega-institute/trureturing/blob/8a9173761a0a8ce40a4238793b5c18e452f76446/D5/S1/Words/Patterns/BarkerCyclicRepetitionCounting.lean}{pinned Lean source},
+the declaration \texttt{result} in namespace
+\texttt{D5.S1.Words.Patterns.}\allowbreak\texttt{BarkerCyclicRepetitionCounting}
+proves \texttt{claim}: the literal eight-letter word count has a unique
+zero-constant-term series with the stated generating function, and its
+positive-index counts equal~\eqref{eq:radical}. The general-$q$ theorem,
+the row polynomials, the binary deductions and the regular-relation and
+event-number formulas have the written proofs above. In that same file,
+\texttt{count\_recurrence} and \texttt{radical\_count} supply the positive-index
+eight-letter recurrence and closed-form identities; their alphabet is fixed at
+eight. The empty-word extensions in this note follow from the written proof.
+The accompanying Python checker gives finite word enumeration, an independent
+forward automaton, exact arithmetic in $\mathbb Z[\sqrt{17}]$ and polynomial
+checks; their ranges are specified in \texttt{checks.json}.
+The companion \texttt{verify\_siblings.py} checks regular relations,
+event-number coefficients, balanced binary substrings and the unequal-label
+identities, with ranges in \texttt{sibling-checks.json}.
+
+\begin{thebibliography}{9}
+\bibitem{hardin8}
+R. H. Hardin, \emph{OEIS A268943}, introduced 16 February 2016;
+formulas conjectured by Colin Barker, 17 January 2019,
+\href{https://oeis.org/history/view?seq=A268943&v=8}{revision 8},
+NAME, FORMULA and EXAMPLE. \url{https://oeis.org/A268943}.
+\bibitem{hardintable}
+R. H. Hardin, \emph{OEIS A268944}, 16 February 2016,
+\href{https://oeis.org/history/view?seq=A268944&v=4}{revision 4},
+NAME, FORMULA and CROSSREFS. \url{https://oeis.org/A268944}.
+\bibitem{binary}
+R. K. Guy and contributors, \emph{OEIS A027383}, revision 193,
+20 June 2026, NAME, COMMENTS and FORMULA. \url{https://oeis.org/A027383}.
+\bibitem{fried}
+Sela Fried, \emph{Proofs of Several Conjectures From the OEIS},
+Journal of Integer Sequences \textbf{28} (2025), Article 25.4.3,
+Section 3.2, Theorem 4, pp.~4--6.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL28/Fried/fried15.pdf}.
+\bibitem{friedpre}
+Sela Fried, \emph{Proofs of some Conjectures from the OEIS},
+arXiv:2410.07237v3, 26 October 2024, Section~2.8, Theorem~10,
+equation~(18), pp.~14--15. \url{https://arxiv.org/abs/2410.07237v3}.
+\bibitem{rowrefs}
+The OEIS Foundation, \emph{OEIS A000027, A000290 and A007531},
+NAME and FORMULA, accessed 14 November 2026.
+\url{https://oeis.org/A000027}, \url{https://oeis.org/A000290},
+\url{https://oeis.org/A007531}.
+\bibitem{unequal}
+R. H. Hardin, \emph{OEIS A269467}, FORMULA,
+\url{https://oeis.org/A269467}; proved by Fried~\cite[Corollary~5]{fried}.
+\end{thebibliography}
+\medskip\noindent
+\small \copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International (CC BY 4.0)}.
+\end{document}

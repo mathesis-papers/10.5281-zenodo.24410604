@@ -1,0 +1,68 @@
+{
+  "binary_formula": {
+    "lengths": [
+      1,
+      80
+    ]
+  },
+  "complete_source_tables": {
+    "A268943": {
+      "sha256": "69f3f53443865a6ada5a1c7a0fa8c1fca202d5ffc9df3af68e6941bf7350bd12",
+      "terms": 210
+    },
+    "A268944": {
+      "sha256": "9187651c979ab3b67e574d28446aeb3420dad33d78cf6f2aa16e881c538178dd",
+      "terms": 9999
+    }
+  },
+  "eight_letter_radical_exact_arithmetic": {
+    "lengths": [
+      0,
+      210
+    ],
+    "ring": "Z[sqrt(17)]"
+  },
+  "independent_forward_automaton": {
+    "alphabet_sizes": [
+      2,
+      12
+    ],
+    "lengths": [
+      0,
+      80
+    ],
+    "parameter_pairs": 891
+  },
+  "literal_word_enumeration": {
+    "alphabet_sizes": [
+      2,
+      8
+    ],
+    "lengths": [
+      0,
+      6
+    ],
+    "parameter_pairs": 49,
+    "words": 519049
+  },
+  "scope": "Finite numerical and exact polynomial checks; the all-length and all-alphabet results have written proofs in note.tex.",
+  "source_examples": {
+    "A268943": 16,
+    "A268944": 16
+  },
+  "source_prefix": {
+    "lengths": [
+      1,
+      19
+    ],
+    "sequence": "A268943"
+  },
+  "status": "pass",
+  "symbolic_polynomial_rows": {
+    "lengths": [
+      1,
+      7
+    ],
+    "variable": "k=q-1"
+  }
+}

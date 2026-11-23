@@ -1,0 +1,20 @@
+{
+  "source_url": "https://github.com/the-omega-institute/trureturing/blob/8a9173761a0a8ce40a4238793b5c18e452f76446/D5/S1/Words/Patterns/BarkerCyclicRepetitionCounting.lean",
+  "source_sha256": "0a5a3d3f202247d2cbfb49fcec1441cddd7022fa3e635c3d65d60d4820d86195",
+  "lean_declaration": "D5.S1.Words.Patterns.BarkerCyclicRepetitionCounting.result",
+  "lean_statement": "The literal eight-letter positive-index count has Barker's unique zero-constant-term generating function and radical formula.",
+  "lean_auxiliary_lemmas": {
+    "count_recurrence": "Eight-letter recurrence relating counts at n+1 through n+4 for n >= 0.",
+    "radical_count": "Eight-letter radical coefficient identity at n+1 for n >= 0."
+  },
+  "written_proofs": [
+    "all alphabet sizes q >= 2, including the empty-word extension",
+    "all column recurrences and seven row polynomials in A268944",
+    "A027383 binary formulas, finite sum, elementary recurrences and balanced-substring equivalence",
+    "eight-letter asymptotic",
+    "all loopless label relations of common indegree d, 0 <= d <= q-1",
+    "Fried's unequal-label enumeration and the seven row and column formulas in A269467",
+    "enumeration by the number of equality events"
+  ],
+  "finite_checks": ["checks.json", "source-table-checks.json", "sibling-checks.json"]
+}

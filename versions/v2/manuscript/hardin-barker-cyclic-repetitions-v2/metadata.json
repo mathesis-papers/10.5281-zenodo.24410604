@@ -1,0 +1,15 @@
+{
+  "id": "hardin-barker-cyclic-repetitions",
+  "revision": 2,
+  "problem_ids": ["barker268943"],
+  "topic": "Cyclic-successor equality events, regular label relations and enumeration by event number",
+  "title": "Barker and Hardin's cyclic-repetition formulas and an extension of Fried's enumeration",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "Extending Fried's repetition-word enumeration (arXiv:2410.07237v3, 26 October 2024, Theorem 10), we prove Colin Barker's two conjectured formulas in the unpaginated FORMULA section of OEIS A268943, revision 8 (17 January 2019), for the arrays introduced by R. H. Hardin. The labels of successive adjacent equal pairs must advance cyclically through an eight-letter alphabet. A three-state decomposition proves the rational generating function and the radical expression for every positive length. The same decomposition works for every alphabet size at least two, establishing the empirical column recurrences and the first seven row polynomials in Hardin's related table A268944. More generally, the enumeration depends only on the common indegree of a loopless relation allowed between successive event labels; Fried's unequal-label rule is one case. We also count words by their number of equality events.",
+  "summary": "A uniform three-state argument proves Barker's eight-letter formulas and Hardin's table identities, extends Fried's known unequal-label enumeration to all loopless constant-indegree relations, and counts words by equality-event number.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/8a9173761a0a8ce40a4238793b5c18e452f76446/D5/S1/Words/Patterns/BarkerCyclicRepetitionCounting.lean"
+}
