@@ -28,7 +28,7 @@
     "CONTRIBUTING.md": "fafd66e63160b2a88f433af56d2af2b0f7bf6ed2fd417d46b54446ce07c627ff",
     "LICENSES/CC-BY-4.0.txt": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
     "README.md": "a1f9442c3810199c2d984df0597bd226be2170e0110d34bb97a6fc87a2265e88",
-    "formalization/nodes.json": "2a4cdeb60b7324b01a15566aa31d1fb702752bb1341b61cd14f982bdd8a23622",
+    "formalization/nodes.json": "1e85656d5dc8ceb4bf82a5b981493db9f216d10094b8d85a5a3134e9eec12c5a",
     "manuscript/hardin-barker-cyclic-repetitions-v2/README.md": "c94b237e3d7ec00fa96e3cf2ab9964bd53c32e7d24d9a9822e55d314e4a131b3",
     "manuscript/hardin-barker-cyclic-repetitions-v2/checks.json": "74bed6f12f443e631488e8503df15566d22cefce4c3b72fe68a5fec7d3e17319",
     "manuscript/hardin-barker-cyclic-repetitions-v2/manifest.json": "d7e898945ec3019801e8f9330a92706ece3e7acb1728e8ab8c9227a23b19a1cc",
@@ -44,5 +44,5 @@
     "paper.pdf": "8c217e515fb22c439dcd5dd943cfa5d3954c67718d9d9025fd087285c9aa28fa",
     "source.archive": "75f286e2423ed80f627ff5bcb4c7b1b26a1b9192c24af5c30b2a4a328d3039d5"
   },
-  "snapshot_identity": "a16c18aaf8b0ffa6b36c524a32ea41bc967c1f512299c3c045c13a39997ac6ab"
+  "snapshot_identity": "0d54abe082870bdd83637ee713559bd1dd80dc901ddd33245c630d932a4ba1e6"
 }
